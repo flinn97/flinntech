@@ -1,0 +1,54 @@
+@import "./layouts.scss";
+
+$phone: 850px;
+$ipad: 1024px;
+$mac: 1280px;
+
+// Define a map of card sizes and their corresponding styles for different breakpoints
+$card-sizes: (
+    sideBarPage: (default: (margin-left:350px),
+        phone: (margin-left:50px),
+        ipad: (margin-left:150px),
+        mac: (margin-left:150px)),
+
+);
+
+
+
+// Mixin to apply card sizes from the map
+@mixin sizeCard($type, $size) {
+  // Apply default styles
+  $default-styles: map-get(map-get($card-sizes, $type), $size);
+
+  @each $property, $value in $default-styles {
+    #{$property}: $value;
+  }
+
+}
+
+//fix for media sizes
+@mixin fixMedia($type) {
+
+  @include sizeCard($type, default);
+
+  @media(max-width:$mac) {
+    @include sizeCard($type, mac);
+  }
+
+  @media(max-width:$ipad) {
+    @include sizeCard($type, ipad);
+  }
+
+  @media(max-width:$phone) {
+    @include sizeCard($type, phone);
+  }
+}
+
+
+.sideBarPageFit {
+  @extend .fit;
+  @include fixMedia(sideBarPage)
+
+
+
+}

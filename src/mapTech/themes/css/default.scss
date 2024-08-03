@@ -1,0 +1,208 @@
+@import "../../../cardTech/layouts.scss";
+@import "../../../cardTech/card.scss";
+// Define breakpoints
+
+$phone: 850px;
+$ipad: 1024px;
+$mac: 1280px;
+// Define breakpoints
+
+
+// Define a map of card sizes and their corresponding styles for different breakpoints
+$card-sizes: (
+    smaller: (default: (width: 8vw, height: 28vh),
+        phone: (width: 98vw, height: 50vh),
+        ipad: (width: 30vw, height: 50vh),
+        mac: (width: 20vw, height: 50vh)),
+    activItem:(default: (width: 50%),
+        phone: (width: 50%, display:block, padding-left:10px),
+        ipad: (width: 100%, padding-left: 0px),
+        mac: (width: 100%, padding-left: 0px)),
+    SBCell:(default: (width: 90%, ),
+        phone: (width: 90%, ),
+        ipad: (width: 100%, display:flex, justify-content:center, align-items:center),
+        mac: (width: 100%, display:flex, justify-content:center, align-items:center)),
+    sideBarLinks:(default: (margin-left: 0px),
+        phone: (margin-left: 0px, ),
+        ipad: (margin-left: 0px, display:flex, justify-content:center, align-items:center),
+        mac: (margin-left: 0px, display:flex, justify-content:center, align-items:center)),
+    logout:(default: (margin-left: 50px),
+        phone: (margin-left: 50px, display:block),
+        ipad: (margin-left: 0px, display:flex, justify-content:center, align-items:center),
+        mac: (margin-left: 0px, display:flex, justify-content:center, align-items:center))
+);
+
+
+// Mixin to apply card sizes from the map
+@mixin sizeCard($type, $size) {
+    // Apply default styles
+    $default-styles: map-get(map-get($card-sizes, $type), $size);
+
+    @each $property, $value in $default-styles {
+        #{$property}: $value;
+    }
+
+}
+
+//fix for media sizes
+@mixin fixMedia($type) {
+
+    @include sizeCard($type, default);
+
+    @media(max-width:$mac) {
+        @include sizeCard($type, mac);
+    }
+
+    @media(max-width:$ipad) {
+        @include sizeCard($type, ipad);
+    }
+
+    @media(max-width:$phone) {
+        @include sizeCard($type, phone);
+    }
+}
+
+.Map-Container {
+    @extend .fullLayoutColumn;
+
+}
+
+
+.Map-Section {
+    @extend .layoutRow;
+    margin: 10px;
+}
+
+.GeneralCellStyles {
+    margin: 5px;
+    @include fonts;
+    width: 100%;
+    justify-content: flex-start;
+    // @include fixMedia(defaultCell)
+}
+
+/* General styling for all items */
+.Map-Cell,
+.Map-Attribute-Item,
+.Map-Text-Item {
+    @extend .GeneralCellStyles;
+}
+
+
+
+.Map-Link {
+    @extend .GeneralCellStyles;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+
+
+}
+
+.Map-Custom-Del-Item,
+.Map-Del-Item,
+.Map-Del-imgItem {
+    @extend .GeneralCellStyles;
+    color: #dc3545;
+    cursor: pointer;
+    //   position: absolute;
+    padding: 0px;
+    //   right: 3px;
+    //   top: 3px;
+}
+
+.Map-imgItem {
+    @extend .GeneralCellStyles;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.Map-Custom-Edit-Item,
+.Map-Edit-imgItem,
+.Map-Edit-Item {
+    @extend .GeneralCellStyles;
+    color: #ffc107;
+    background-color: none;
+    cursor: pointer;
+    // position: absolute;
+    // padding: 0px;
+    // left: 3px;
+    // top: 3px;
+}
+
+
+.Map-Active-Item {
+    color: black;
+    background-color: #BFD7EA;
+    height: 100%;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    justify-content: center;
+    @include fixMedia(activItem);
+
+}
+
+.backgound-item {
+    @extend .Map-Attribute-Item;
+    @include center;
+    
+
+}
+
+.cell-background {
+    @extend .Map-Cell;
+    width: 100%;
+    /* Adjust as needed */
+    height: 250px;
+    /* Adjust as needed */
+    display: flex;
+    /* Optional: Enables flexbox for centering content */
+    justify-content: center;
+    /* Optional: Centers content horizontally */
+    align-items: center;
+    /* Optional: Centers content vertically */
+    color: white;
+    /* Adjust text color as needed */
+    text-align: center;
+    font-size: 50px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
+    /* Centers text */
+    /* Adjust font size as needed */
+    /* Initial background properties, will be overridden by JavaScript */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    border-radius: 15px;
+
+}
+.arrow{
+    width: 10px;
+    height: 10px;
+    background-color: #3498db;
+    cursor: pointer;
+}
+
+.upward-arrow {
+    @extend .arrow;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.downward-arrow {
+    @extend .arrow;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+
+.left-arrow {
+    @extend .arrow;
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+}
+
+.right-arrow {
+    @extend .arrow;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}

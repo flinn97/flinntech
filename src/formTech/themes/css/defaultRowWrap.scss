@@ -1,0 +1,8 @@
+@import "./defaultRow.scss";
+.DRW-Map-Container {
+    @extend .DR-Map-Container;
+    flex-wrap: wrap; 
+  }
+
+
+

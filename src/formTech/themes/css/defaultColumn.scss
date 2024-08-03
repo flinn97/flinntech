@@ -1,0 +1,90 @@
+@import "./default.scss";
+
+.DC-Map-Container {
+  @extend .Map-Container;
+}
+
+
+.DC-Map-Section {
+  @extend .Map-Section;
+
+}
+
+.DC-Map-Section:hover {
+  background: linear-gradient(#b0c9df09, #b0c9df0e);
+
+}
+
+/* General styling for all items */
+.DC-Cell,
+.DC-Attribute-Item,
+.DC-Text-Item {
+  @extend .Map-Cell
+}
+
+
+
+/* Add specific styles for each item type if needed */
+.DC-Link {
+  @extend .Map-Link;
+}
+
+.DC-Custom-Del-Item,
+.DC-Del-Item,
+.DC-Del-imgItem {
+  @extend .Map-Del-Item;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+
+.DC-imgItem {
+  @extend .Map-imgItem;
+}
+
+.DC-Custom-Edit-Item,
+.DC-Edit-imgItem,
+.DC-Edit-Item {
+  @extend .Map-Edit-Item;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}
+
+
+
+.DC-Active-Item {
+  @extend .Map-Active-Item;
+}
+
+
+// .Bold-Title {
+//   font-weight: 600;
+//   font-size: 1.3rem;
+//   text-align: left;
+//   width: 100%;
+//   color: aliceblue;
+//   text-overflow: ellipsis;
+// }
+
+// .Ellipsis-Text {
+//   display: block;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+
+//   hyphens: auto;
+//   max-width: 330px;
+//   min-height: 5.5rem;
+//   max-height: 5.5rem;
+//   padding: 8px;
+//   font-size: 1.1rem;
+//   text-align: justify;
+// }
+
+
+// .Img-Midsize {
+//   width: 100%;
+//   max-height: 200px;
+//   border-radius: 11px;
+//   object-fit: cover;
+// }

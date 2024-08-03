@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "gospel-230ff",
+    "production": "gospel-230ff"
+  },
+  "targets": {},
+  "etags": {}
+}

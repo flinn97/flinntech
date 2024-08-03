@@ -1,0 +1,151 @@
+@import "./default.scss";
+
+.DR-Map-Container {
+  @extend .Map-Container;
+  flex-direction: row;
+
+}
+
+
+.DR-Map-Section {
+  @extend .layoutColumnFitContentCenter;
+  height: fit-content;
+}
+
+// .DR-Link, .Button-Type1 {
+//   background: #b6ab6f;
+//   color: "#111319";
+//   font-size: 1.1rem;
+//   padding: 6px 18px;
+//   margin-bottom: 11px;
+//   margin-top: 18px;
+//   width: fit-content;
+//   cursor: pointer;
+// }
+
+// .Button-Type2 {
+//   background: #0f141cf5;
+//   color: #ffffdf;
+//   padding: 6px 10px;
+//   margin: 5px;
+//   margin-bottom: 11px;
+//   cursor: pointer;
+//   display: flex;
+//   align-self: end;
+//   height: fit-content;
+//   width: fit-content;
+//   border-radius: 9px;
+//   font-size: 1.4rem;
+//   font-weight: 600;
+//   text-align: center;
+//   justify-items: center;
+//   font-family: 'inria';
+//   justify-self: flex-end;
+// }
+
+/* .DR-Link:hover {
+  box-shadow: inset 2px 2px black;
+  transform: scale(0.98);
+  color: "#111319";
+} */
+
+// .DR-Link:hover{
+//   transform: scale(0.98);
+//   box-shadow: inset 2px 2px #00000055, inset -2px -2px  #ffffff55;
+//   color: "#111319";
+// }
+
+// .Button-Type1:hover,.Button-Type2:hover{
+//   transform: scale(0.98);
+//   color: "#111319";
+// }
+
+
+// .DR-hover-shimmer {
+//   top: 15px;
+//   position: absolute;
+//   border: 1px solid #1E90FF00;
+//   right: 0px;
+//   opacity: 92%;
+//   overflow: hidden;
+// }
+
+// .DR-hover-shimmer:hover {
+//   position: absolute;
+//   opacity: 98%;
+//   border: 1px solid #1E90FF;
+//   box-shadow: inset 2px 2px 4px #000000, inset -2px -2px 4px #ffffff55;
+// }
+
+// .DR-hover-shimmer::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: -100%; /* Start from the left */
+//   width: 100%; /* Full width of the parent */
+//   height: 100%; /* Full height of the parent */
+//   background: linear-gradient(90deg, transparent, rgba(52, 55, 73, 0.4), transparent);
+//   animation: none; /* No animation by default */
+//   opacity: 0; /* Make it invisible by default */
+//   transition: opacity 0.5s ease; /* Smooth transition for the shimmer effect */
+//   mix-blend-mode: lighten;
+// }
+
+
+
+// .DR-hover-shimmer:hover::before {
+//   animation: shimmer 8s infinite; /* Adjust time as needed */
+//   opacity: 1; /* Make the shimmer visible on hover */
+// }
+
+// @keyframes shimmer {
+//   0% {
+//     left: -580%; /* Start from the left */
+//   }
+//   50% {
+//     left: 980%; /* Move to the right */
+//   }
+//   100% {
+//     left: -100%; /* Return to start */
+//   }
+// }
+
+// .Shimmer {
+//   top: 6px;
+//   position: absolute;
+//   display: flex;
+//   flex-direction: row;
+//   border: 1px solid #1E90FF00;
+//   background-color: rgba(52, 55, 73, 1);
+//   right: 0px;
+//   font-size: 1.2rem;
+//   color:  #e8d259;
+//   opacity: 92%;
+//   padding: 4px 10px;
+//   overflow: hidden;
+//   width: fit-content; /* Full width of the parent */
+//   height: fit-content; /* Full height of the parent */
+// }
+
+// .Shimmer:hover {
+//   position: absolute;
+//   opacity: 88%;
+//   box-shadow: 1px 1px 1px #000000;
+//   color:  #ffdead;
+//   transition: all;
+// }
+
+// .Shimmer::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: -100%;
+//   background: linear-gradient(90deg, transparent, rgba(52, 55, 73, 0.4), transparent);
+//   animation: none; /* No animation by default */
+//   opacity: 0; /* Make it invisible by default */
+//   transition: opacity 0.5s ease; /* Smooth transition for the shimmer effect */
+//   mix-blend-mode: lighten;
+//   animation: shimmer 8s infinite; /* Adjust time as needed */
+//   opacity: 1; /* Make the shimmer visible on hover */
+// }
+  

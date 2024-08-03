@@ -1,0 +1,342 @@
+@import "./mod.scss";
+@import "./layouts.scss";
+
+
+.card {
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $cardColor;
+
+}
+
+
+
+.defaultCard {
+  @extend .card;
+  border-radius: 23px;
+  box-shadow: 2px 5px 6px $shadowColor;
+}
+
+.noBorderCard {
+  @extend .card;
+
+}
+
+
+
+// Define breakpoints
+
+$phone: 850px;
+$ipad: 1024px;
+$mac: 1280px;
+// Define breakpoints
+
+
+// Define a map of card sizes and their corresponding styles for different breakpoints
+$card-sizes: (
+  smaller: (default: (width: 8vw, height: 28vh),
+    phone: (width: 98vw, height: 50vh),
+    ipad: (width: 30vw, height: 50vh),
+    mac: (width: 20vw, height: 50vh)),
+  small: (default: (width: 13vw, height: 28vh),
+    phone: (width: 98vw, height: 50vh),
+    ipad: (width: 40vw, height: 50vh),
+    mac: (width: 30vw, height: 50vh)),
+  normal: (default: (width: 18, height: 32vh),
+    phone: (width: 98vw, height: 50vh),
+    ipad: (width: 50vw, height: 50vh),
+    mac: (width: 40vw, height: 50vh)),
+  fit: (default: (width: 100%, height: 100%),
+    phone: (width: 100%, height: 100%),
+    ipad: (width: 100%, height: 100%),
+    mac: (width: 100%, height: 100%)),
+  auto: (default: (width: auto, height: auto),
+    phone: (width: auto, height: auto),
+    ipad: (width: auto, height: auto),
+    mac: (width: auto, height: auto)),
+  big: (default: (width: 32vw, height: 34vh),
+    phone: (width: 98vw, height: 80vh),
+    ipad: (width: 60vw, height: 80vh),
+    mac: (width: 55vw, height: 80vh)),
+  bigger: (default: (width: 52vw, height: 50vh),
+    phone: (width: 90vw, height: 70vh),
+    ipad: (width: 70vw, height: 70vh),
+    mac: (width: 60vw, height: 70vh)),
+  biggest: (default: (width: 72vw, height: 84.1vh),
+    phone: (width: 98vw, height: 95vh),
+    ipad: (width: 80vw, height: 95vh),
+    mac: (width: 70vw, height: 95vh)),
+  tall: (default: (width: 16.97916vw, height: 42.05vh),
+    phone: (width: 98vw, height: 95vh),
+    ipad: (width: 40vw, height: 95vh),
+    mac: (width: 30vw, height: 95vh)),
+  fullHeight: (default: (width: 15vw, height: 100vh),
+    phone: (width: 98vw, height: 100vh),
+    ipad: (width: 40vw, height: 100vh),
+    mac: (width: 30vw, height: 100vh)),
+  fullHeightNav: (default: (width: 15vw, height: 100vh),
+    phone: (width: 300px, height: 100vh, left: -400px),
+    ipad: (width: 100px, height: 100vh),
+    mac: (width: 100px, height: 100vh)),
+  long: (default: (width: 42.05vw, height: 16.97916vh),
+    phone: (width: 98vw, height: 40vh),
+    ipad: (width: 85vw, height: 40vh),
+    mac: (width: 85vw, height: 30vh)),
+  fullLength: (default: (width: 100vw, height: 16.97916vh),
+    phone: (width: 100vw, height: 40vh),
+    ipad: (width:100vw, height: 40vh),
+    mac: (width: 100vw, height: 30vh)),
+  fullLengthNav: (default: (width: 100vw, height: 100px),
+    phone: (width: 100vw, height: 100px),
+    ipad: (width:100vw, height: 100px),
+    mac: (width: 100vw, height: 100px))
+);
+
+
+// Mixin to apply card sizes from the map
+@mixin sizeCard($type, $size) {
+  // Apply default styles
+  $default-styles: map-get(map-get($card-sizes, $type), $size);
+
+  @each $property, $value in $default-styles {
+    #{$property}: $value;
+  }
+
+}
+
+//fix for media sizes
+@mixin fixMedia($type) {
+
+  @include sizeCard($type, default);
+
+  @media(max-width:$mac) {
+    @include sizeCard($type, mac);
+  }
+
+  @media(max-width:$ipad) {
+    @include sizeCard($type, ipad);
+  }
+
+  @media(max-width:$phone) {
+    @include sizeCard($type, phone);
+  }
+}
+
+
+//create the backdrop for popup cards
+.backDropPopup {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  padding-top: 20vh;
+  display: flex;
+  justify-content: center;
+  z-index: 1000000000;
+  // align-items: center;
+}
+
+//create the content section
+.popupContent {
+  position: relative;
+  height: fit-content;
+  
+
+}
+
+//create the close button
+.closePopup {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.scroller {
+
+  height: 100%;
+  overflow-y: scroll;
+  /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroller::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroller {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: 3px;
+  /* Firefox */
+  overflow: -moz-scrollbars-none;
+}
+
+.scroller::-webkit-scrollbar {
+  width: 3px;
+
+
+}
+
+
+//basic class for main content.
+.mainContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+// default cards
+.smallerCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(smaller)
+}
+
+.smallCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(small)
+}
+
+.normalCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(normal)
+}
+
+.bigCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(big)
+}
+
+.biggerCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(bigger)
+}
+
+.biggestCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(biggest)
+}
+
+.tallCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(tall)
+}
+
+.fitDefault {
+  @extend .defaultCard;
+  @include fixMedia(fit)
+}
+
+.autoDefault {
+  @extend .defaultCard;
+  @include fixMedia(auto)
+}
+
+.fullHeightCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(fullHeight)
+}
+
+.longCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(long)
+}
+
+.fullLengthCardDefault {
+  @extend .defaultCard;
+  @include fixMedia(fullLength)
+}
+
+.sideBarDefault {
+  @extend .defaultCard;
+  left: 0;
+  @include fixMedia(fullHeightNav);
+  border-radius: 0px;
+  position: fixed;
+  right: 0;
+
+}
+
+.topBarDefault {
+  @extend .defaultCard;
+  @include fixMedia(fullLengthNav);
+  border-radius: 0px;
+
+
+}
+
+// no borders
+
+.smallerCardNoBorder {
+  @extend .defaultCard;
+  @include fixMedia(smaller)
+}
+
+.smallCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(small)
+}
+
+.normalCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(normal)
+}
+
+.bigCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(big)
+}
+
+.biggerCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(bigger)
+}
+
+.biggestCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(biggest)
+}
+
+.tallCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(tall)
+}
+
+.fitNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(fit)
+}
+.autoNoBorder {
+  @extend .defaultCard;
+  @include fixMedia(auto)
+}
+
+.fullHeightCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(fullHeight)
+}
+
+.longCardNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(long)
+}
+
+.fullLengthNoBorder {
+  @extend .noBorderCard;
+  @include fixMedia(fullLength)
+}
+
+.relativeContainer{
+  @extend .fit;
+  @include center;
+  position: relative;
+  
+}

@@ -1,0 +1,205 @@
+@mixin center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+
+@mixin centerTop {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+a {
+  text-decoration: none;
+  color: "black";
+}
+
+@mixin fonts {
+  font-family: "inria";
+  font-size: 1.1rem;
+}
+
+
+//full screens
+.fullScreen {
+  width: 100vw;
+  height: 100vh;
+  @include fonts;
+}
+
+.fullCenter {
+  @extend .fullScreen;
+  @include centerTop;
+  @include fonts;
+}
+
+.fullCC {
+  @extend .fullCenter;
+  @include center;
+}
+
+.fit {
+  width: 100%;
+  height: 100%;
+  @include fonts;
+}
+
+.fitCenter {
+  @extend .fit;
+  @include centerTop();
+}
+
+.fitCC {
+  @extend .fitCenter;
+  @include center();
+}
+
+//All rows
+
+.layoutRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  @include fonts;
+}
+
+.centerLayoutRow {
+  @extend .layoutRow;
+  justify-content: center;
+  // align-items: center;
+}
+
+
+.ccLayoutRow {
+  @extend .centerLayoutRow;
+  align-items: center;
+
+}
+
+.fullLayoutRow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  @include fonts;
+}
+.fullWidthRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  @include fonts;
+}
+
+.fullCenterLayoutRow {
+  @extend .fullLayoutRow;
+  justify-content: center;
+  // align-items: center;
+}
+
+.fullCCLayoutRow {
+  @extend .fullCenterLayoutRow;
+  align-items: center;
+}
+
+.layoutRowWrap {
+  @extend .layoutRow;
+  flex-wrap: wrap;
+}
+
+.centerLayoutRowWrap {
+  @extend .centerLayoutRow;
+  flex-wrap: wrap;
+}
+
+.ccLayoutRowWrap {
+  @extend .ccLayoutRow;
+  flex-wrap: wrap;
+}
+
+.fullLayoutRowWrap {
+  @extend .fullLayoutRow;
+  flex-wrap: wrap;
+}
+
+.fullCenterLayoutRowWrap {
+  @extend .fullCenterLayoutRow;
+  flex-wrap: wrap;
+}
+
+.fullCCLayoutRowWrap {
+  @extend .fullCCLayoutRow;
+  flex-wrap: wrap;
+}
+
+//all columns
+
+.layoutColumn {
+  @extend .layoutRow;
+  flex-direction: column;
+}
+
+.layoutColumnCenter {
+  @extend .layoutColumn;
+  justify-content: center;
+}
+
+.layoutColumnCC {
+  @extend .layoutColumnCenter;
+  align-items: center;
+}
+
+.fullLayoutColumn {
+  @extend .fullLayoutRow;
+  flex-direction: column;
+}
+
+.layoutColumnFitContent {
+  @extend .layoutColumn;
+  width: auto;
+}
+
+.layoutColumnFitContentCenter {
+  @extend .layoutColumnCC;
+  width: auto;
+
+}
+
+$phone: 850px;
+$ipad: 1024px;
+$mac: 1280px;
+
+$getWidth: (
+  default: (width: 15vw, height: 100vh),
+  phone: (width: 98vw, height: 100vh),
+  ipad: (width: 40vw, height: 100vh),
+  mac: (width: 30vw, height: 100vh)
+);
+
+// Mixin to apply card sizes from the map
+@mixin sizeCard($type, $size) {
+  // Apply default styles
+  $default-styles: map-get($card-sizes, $type), $size;
+
+  @each $property, $value in $default-styles {
+    #{$property}: $value;
+  }
+
+}
+
+//fix for media sizes
+@mixin fixMedia() {
+
+  @include sizeCard(getWidth, default);
+
+  @media(max-width:$mac) {
+    @include sizeCard(getWidth, mac);
+  }
+
+  @media(max-width:$ipad) {
+    @include sizeCard(getWidth, ipad);
+  }
+
+}

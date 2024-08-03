@@ -1,0 +1,132 @@
+@import "../../../cardTech/layouts.scss";
+@import "../../../cardTech/card.scss";
+// Define breakpoints
+// Define some variables for easy customization
+$primary-color: #3498db;
+$error-color: #e74c3c;
+$label-color: #2c3e50;
+$input-border-color: #bdc3c7;
+$input-focus-border-color: $primary-color;
+$input-padding: 10px;
+$input-font-size: 16px;
+$label-font-size: 14px;
+$error-font-size: 12px;
+$wrapper-margin-bottom: 20px;
+$phone: 850px;
+$ipad: 1024px;
+$mac: 1280px;
+// Define breakpoints
+
+
+// Define a map of card sizes and their corresponding styles for different breakpoints
+$card-sizes: (
+    smaller: (default: (width: 8vw, height: 28vh),
+        phone: (width: 98vw, height: 50vh),
+        ipad: (width: 30vw, height: 50vh),
+        mac: (width: 20vw, height: 50vh)),
+);
+
+
+// Mixin to apply card sizes from the map
+@mixin sizeCard($type, $size) {
+    // Apply default styles
+    $default-styles: map-get(map-get($card-sizes, $type), $size);
+
+    @each $property, $value in $default-styles {
+        #{$property}: $value;
+    }
+
+}
+
+//fix for media sizes
+@mixin fixMedia($type) {
+
+    @include sizeCard($type, default);
+
+    @media(max-width:$mac) {
+        @include sizeCard($type, mac);
+    }
+
+    @media(max-width:$ipad) {
+        @include sizeCard($type, ipad);
+    }
+
+    @media(max-width:$phone) {
+        @include sizeCard($type, phone);
+    }
+}
+
+
+
+.defaultWrapper {
+  margin-bottom: $wrapper-margin-bottom;
+}
+
+  .defaultLabel {
+    display: block;
+    margin-bottom: 5px;
+    color: $label-color;
+    font-size: $label-font-size;
+  }
+
+  .defaultInputForm {
+    width: 100%;
+    padding: $input-padding;
+    font-size: $input-font-size;
+    border: 1px solid $input-border-color;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: $input-focus-border-color;
+      outline: none;
+    }
+  }
+
+  .defaultInputFormAuth{
+    @extend .defaultInputForm;
+    padding: 3px;
+  }
+
+  .defaultLoginForm{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 250px;
+  }
+
+  .defaultErrorMessage {
+    margin-top: 5px;
+    color: $error-color;
+    font-size: $error-font-size;
+  }
+  .defaultButton{
+    @include center;
+    width: 250px;
+    height: 120;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+  }
+  .defaultLoginButton{
+    @extend .defaultButton;
+    width: 100px;
+    margin-bottom: 20px
+
+  }
+  .popupButton{
+    @include center;
+    position: absolute;
+    bottom: 0px;
+    left:20px;
+    
+  }
+
+  .delButton{
+    @extend .defaultButton;
+    background-color: #DB2955;
+    color:white;
+  }
+.uploadedImg{
+  max-width: 400px;
+  margin-top: 10px;
+}

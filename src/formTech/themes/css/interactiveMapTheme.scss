@@ -1,0 +1,29 @@
+@import "./default.scss";
+
+
+.IM-Map-Container {
+
+    @extend .fit;
+    position: relative;
+
+  }
+
+  .IM-Map-Section{
+    left:0;
+    top:0;
+    border-radius:50%;
+    @include center;
+    position: absolute;
+  }
+
+  .IM-Map{
+    @extend .fit;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .IM-addButton{
+    position: absolute;
+    left: 0;
+    top:0;
+  }
