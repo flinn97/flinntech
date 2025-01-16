@@ -1,7 +1,8 @@
 {
   "projects": {
-    "default": "gospel-230ff",
-    "production": "gospel-230ff"
+    "default": "eidashboard",
+    "production": "eidashboard",
+    "flinn": "eidashboard"
   },
   "targets": {},
   "etags": {}

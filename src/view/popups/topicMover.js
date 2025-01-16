@@ -1,7 +1,7 @@
 import { MapComponent } from "../../mapTech/mapComponentInterface";
-import TopicPopupContent from "./TopicPopupContent";
+import OemPopupContent from "./OemPopupContent";
 
-export default class TopicMover extends TopicPopupContent {
+export default class TopicMover extends OemPopupContent {
     constructor(props) {
         super(props);
         this.state = {

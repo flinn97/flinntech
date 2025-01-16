@@ -4,7 +4,7 @@ class NavList {
   constructor() {
     binder.bind(this);
     this.list = [
-      { type: "logo", picURL: undefined, label: undefined, default:true },
+      { type: "logo", picURL: undefined, label: undefined, default:true, },
       { type: "links", linkJson: undefined, default:true },
       { type: "logout", logoutFunc: undefined, auth: undefined, default:true }
     ];

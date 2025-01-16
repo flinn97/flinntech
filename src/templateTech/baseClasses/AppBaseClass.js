@@ -20,6 +20,7 @@ class AppBaseClass extends BaseComponent {
   storage;
   auth;
   popupComponents;
+  popupComponentsProps;
   constructor(props, obj, components) {
     super(props);
     obj = this.props.config||obj
@@ -103,6 +104,13 @@ class AppBaseClass extends BaseComponent {
   setPopups(){
     
     for(let obj of this.state.popups){
+      
+      let t = obj.componentType;
+      if(t){
+        
+        obj ={...obj, ...this.popupComponentsProps[t]}
+
+      }
       if(!obj.popupSwitch){
         obj.popupSwitch = this.classNameToString(obj.content)
       }
@@ -133,7 +141,9 @@ class AppBaseClass extends BaseComponent {
       <div className={this.state.pageClass} style={this.state.pageStyle} >
         <BrowserRouter>
           {PopupCreater.createPopupMachine({ app: this.app })}
-          {this.state.currentUser&&<Navbar  {...this.state.navBarProps} />}
+          {/* {this.state.currentUser&& */}
+          <Navbar  {...this.state.navBarProps} />
+          {/* } */}
           {Content?<Content.content props={{...Content.props}} />:<></>}
           <Router routes={routes}/>
         </BrowserRouter>

@@ -237,27 +237,35 @@ export default class ComponentList {
         return this.operationsFactory;
     }
 
-    createQueryJson(type, ids, filterKeys, obj) {
+   
+    createQueryJson(typeValue, ids, filterKeys, obj, typeAttribute = "type") {
         obj = obj || {};
-        if(filterKeys===undefined&&ids){
-            filterKeys="_id"
+    
+        if (filterKeys === undefined && ids) {
+            filterKeys = "_id";
         }
+    
         ids = Array.isArray(ids) ? ids : [ids];
-        
         filterKeys = Array.isArray(filterKeys) ? filterKeys : [filterKeys];
-
-
+    
         let json = {
             where: [
-                { attribute: "type", val: type },
+                { attribute: typeAttribute, val: typeValue },
             ],
-            ...obj
+            ...obj,
+        };
+    
+        if (ids.length > 0 && ids[0] !== undefined) {
+            json.where = [
+                ...json.where,
+                ...ids.map((id, index) => ({
+                    attribute: filterKeys[index] || filterKeys[0],
+                    val: id,
+                })),
+            ];
         }
-        if (ids) {
-            json.where = [...json.where, ...ids?.map((id, index) => { return { attribute: filterKeys[index], val: id } })]
-        }
-        return json
-
+    
+        return json;
     }
 
     /**
@@ -266,10 +274,11 @@ export default class ComponentList {
      * @returns 
      */
     async getComponentsFromBackend(listReq, owner) {
+        
         if(typeof listReq ==="string"){
             listReq= {type:listReq, owner:owner===false?owner:true}
         }
-        let json = await this.createQueryJson(listReq.type, listReq.ids, listReq.filterKeys, listReq.obj);
+        let json = await this.createQueryJson(listReq.type, listReq.ids, listReq.filterKeys, listReq.obj, listReq.typeAttribute);
 
         let backendList = await this.APIService[listReq.snapshot ? "firebaseGetterSnapshot" : "firebaseGetter"](json, listReq.path, listReq.owner);
 

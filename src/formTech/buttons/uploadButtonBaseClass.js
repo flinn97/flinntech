@@ -50,7 +50,7 @@ export default class UploadButtonBaseClass extends BaseButton {
         
             pic = await this.APIService.downloadPics(this.fileInfo.path);
             if(!this.props.skipUpdate && !this.state.skipUpdate){
-                debugger
+                
                 if(this.obj?.length){
                     for(let comp of this.obj){
                         await comp.setCompState({[this.props.uploadAttribute||"picURL"]: pic});

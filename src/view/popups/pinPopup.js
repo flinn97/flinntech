@@ -1,7 +1,7 @@
-import TopicPopupContent from "./TopicPopupContent";
+import OemPopupContent from "./OemPopupContent";
 import TopicMover from "./topicMover";
 
-export default class PinPopup extends TopicPopupContent {
+export default class PinPopup extends OemPopupContent {
     constructor(props) {
         super(props)
         this.state = {
@@ -63,7 +63,7 @@ export default class PinPopup extends TopicPopupContent {
                 
                 this.updatePin(obj);
             }}/>,
-            "topicEditor": <TopicPopupContent obj={obj} callbackFunc={() => {
+            "topicEditor": <OemPopupContent obj={obj} callbackFunc={() => {
                 this.updatePin();
             }} />,
             "pin": this.getHtml()

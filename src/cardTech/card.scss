@@ -68,10 +68,10 @@ $card-sizes: (
     phone: (width: 98vw, height: 95vh),
     ipad: (width: 80vw, height: 95vh),
     mac: (width: 70vw, height: 95vh)),
-  tall: (default: (width: 16.97916vw, height: 42.05vh),
-    phone: (width: 98vw, height: 95vh),
-    ipad: (width: 40vw, height: 95vh),
-    mac: (width: 30vw, height: 95vh)),
+  tall: (default: (width: 30.97916vw, height: 60.05vh),
+    phone: (width: 90vw, height: 90vh),
+    ipad: (width: 40vw, height: 90vh),
+    mac: (width: 30vw, height: 90vh)),
   fullHeight: (default: (width: 15vw, height: 100vh),
     phone: (width: 98vw, height: 100vh),
     ipad: (width: 40vw, height: 100vh),
@@ -88,10 +88,14 @@ $card-sizes: (
     phone: (width: 100vw, height: 40vh),
     ipad: (width:100vw, height: 40vh),
     mac: (width: 100vw, height: 30vh)),
-  fullLengthNav: (default: (width: 100vw, height: 100px),
-    phone: (width: 100vw, height: 100px),
-    ipad: (width:100vw, height: 100px),
-    mac: (width: 100vw, height: 100px))
+    popupBackdrop: (default: (padding-top:20vh),
+    phone: (padding-top:3vh),
+    ipad: (padding-top:10vh),
+    mac: (padding-top:10vh)),
+  fullLengthNav: (default: (width: 100vw, height: 60px),
+    phone: (width: 100vw, height: 60px),
+    ipad: (width:100vw, height: 60px),
+    mac: (width: 100vw, height: 60px))
 );
 
 
@@ -127,13 +131,15 @@ $card-sizes: (
 
 //create the backdrop for popup cards
 .backDropPopup {
+  @include fixMedia(popupBackdrop);
+
   position: fixed;
   background: #00000050;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
-  padding-top: 20vh;
+  // padding-top: 20vh;
   display: flex;
   justify-content: center;
   z-index: 1000000000;

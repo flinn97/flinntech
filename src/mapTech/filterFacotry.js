@@ -8,7 +8,11 @@ export default class FilterFactory {
         tag: filterByTag,
         plain: textFilter,
         textAndTag: filterByTextThenTitle,
-        textAndTag2: filterByTitleThenTagText
+        textAndTag2: filterByTitleThenTagText,
+        bool: filterByBool,
+        textAttributeList:consistentlyFilterByTextAttributeList
+
+
 
 
 
@@ -150,5 +154,21 @@ function textFilter(json) {
     if (search && search.length > 0) {
         list = list.filter(obj => obj[attribute]?.toLowerCase().includes(search?.toLowerCase()));
     }
+    return list;
+}
+//Better function than the one above for a more pluggable multi filter with attributes.
+function consistentlyFilterByTextAttributeList(json) {
+    
+    let {  attributeList } = json;
+    let newList = [];
+    for(let attribute of attributeList){
+        newList = [...newList, ...textAttributeFilter({...json, attribute:attribute})]
+    }
+    newList = filterRemoveDupes(newList);
+    return newList
+}
+function filterByBool(json) {
+    let { list, attribute, search } = json;
+    list = list.filter(obj=> obj.getJson()[attribute]===search)
     return list;
 }

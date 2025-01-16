@@ -26,6 +26,7 @@ import BaseReactFactory from "../templateTech/factories/baseReactFactory";
 import OrderedArrowsBaseClass from "./orderedListComponets/arrows";
 import InnerMap from "./fileHierarchyMap/innerMap";
 import AvaBackgroundImage from "./coolComponents/avaBackgroundImage";
+import CustomBuiltItem from "./customBuiltItem";
 
 /**
  * factory for getting different items for the map component
@@ -35,6 +36,7 @@ export default class MapFactory extends BaseReactFactory {
         text: TextItem,
         attribute: AttributeItem,
         custom: CustomComponentItem,
+        customBuilt: CustomBuiltItem,
         img: ImgItem,
         form: FormItem,
         del: DelItem,

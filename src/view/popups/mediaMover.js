@@ -1,7 +1,7 @@
 import { MapComponent } from "../../mapTech/mapComponentInterface";
-import TopicPopupContent from "./TopicPopupContent";
+import OemPopupContent from "./OemPopupContent";
 
-export default class MediaMover extends TopicPopupContent {
+export default class MediaMover extends OemPopupContent {
     checkIds(obj){
         let imageTopicId = obj.getJson().topicId;
         let imageSubTopicId = obj.getJson().subTopicId;

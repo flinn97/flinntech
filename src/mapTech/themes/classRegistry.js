@@ -24,6 +24,7 @@ class DefaultRegistry {
   MCBackgroundItem= "background-item";
   MCCellBackground="cell-background";
   MCBackgroundLink="cell-background";
+  MCLogoItem="navLogo";
 
 
 }

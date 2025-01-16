@@ -341,7 +341,7 @@ class Auth {
     async getuser(email) {
         
         this.userEmail=email;
-        let user = await this.componentList.getComponentFromBackend({type:"user", id:email});
+        let user = await this.componentList.getComponentFromBackend({type:"user", ids:email});
         if (user) {
             this.dispatch({ currentUser: user, email: email, gotUser: true });
         }
@@ -403,6 +403,7 @@ class Auth {
     }
 
     async add(arr, path,  dispatchKey, timeKey,) {
+        
         arr = await arr.map((obj)=>{
             if(obj.getJson().owner ==="" ||obj.getJson().owner===undefined){
                 obj.setCompState({owner:this.userEmail})
@@ -421,7 +422,7 @@ class Auth {
     }
 
     async operate(arr, operation, path, dispatchKey, timeKey) {
-        
+        try{
         arr = await this.prep(arr);
         path = path || this.path
         for (let component of arr) {
@@ -441,6 +442,11 @@ class Auth {
         this.dispatchObserver.run([{[dispatchKey]:arr}])
 
         return arr
+    }
+    catch(e){
+        console.log(e)
+        console.error(arr, "something went wrong with this operation")
+    }
     }
 }
 

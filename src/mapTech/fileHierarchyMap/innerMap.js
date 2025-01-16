@@ -24,7 +24,7 @@ export default class InnerMap extends BaseClass{
         return map
     }
     additionalPostSetup(){
-        debugger
+        
         this.item.setStyle({...this.item.getStyle(), position:"relative"});
     }
     getOption(){

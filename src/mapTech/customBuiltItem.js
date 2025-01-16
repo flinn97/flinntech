@@ -1,6 +1,6 @@
 import BaseClass from './baseClass';
 //model
-export default class CustomComponentItem extends BaseClass {
+export default class CustomBuiltItem extends BaseClass {
   constructor(props){
     super(props);
     this.state.classKey="MCCustom"
@@ -9,8 +9,7 @@ export default class CustomComponentItem extends BaseClass {
   }
   getOption(){
     
-    let Comp = this.cell.custom
-    return <Comp {...this.props} masterCell={this}/>
+    return this.cell.custom
   }
 
 

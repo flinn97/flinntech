@@ -118,7 +118,7 @@ class Nav extends Card{
     let navComponent=this.getFactoryComponent(props)
     
     
-    this.content = <>{navComponent}<>{(this.state.phone ||window.innerWidth<this.state.phoneSize)&& <>{this.getMenu()}</>}</></>
+    this.content = <>{navComponent}<>{this.props.type!=="type"&&<>{(this.state.phone ||window.innerWidth<this.state.phoneSize)&& <>{this.getMenu()}</>}</>}</></>
     return this.content
   }
   

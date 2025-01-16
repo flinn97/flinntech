@@ -65,6 +65,10 @@ a {
   flex-direction: row;
   @include fonts;
 }
+.layoutRowSpace {
+  @extend .layoutRow;
+  justify-content: space-between
+}
 
 .centerLayoutRow {
   @extend .layoutRow;

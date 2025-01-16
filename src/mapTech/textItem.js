@@ -10,7 +10,7 @@ export default class TextItem extends AttributeItem {
 
   }
   getOption(){
-    return this.name
+    return <>{this.cell.name}</>
   }
 
 

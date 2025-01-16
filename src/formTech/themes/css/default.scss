@@ -11,7 +11,7 @@ $input-padding: 10px;
 $input-font-size: 16px;
 $label-font-size: 14px;
 $error-font-size: 12px;
-$wrapper-margin-bottom: 20px;
+$wrapper-margin-bottom: 10px;
 $phone: 850px;
 $ipad: 1024px;
 $mac: 1280px;
@@ -101,12 +101,17 @@ $card-sizes: (
   }
   .defaultButton{
     @include center;
-    width: 250px;
-    height: 120;
-    background-color: #3498db;
-    color: white;
+    width: 120px;
+    height: 25px;
+    background-color: white;
+    color: black;
     cursor: pointer;
   }
+  .imgButton{
+    @extend .defaultButton;
+    background-color: none;
+  }
+  
   .defaultLoginButton{
     @extend .defaultButton;
     width: 100px;

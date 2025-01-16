@@ -9,7 +9,7 @@ export default class DelButton extends BaseButton{
    
 
     buttonClickFunc(){
-        this.obj.del();
+        this.props.obj.del();
 
     }
 

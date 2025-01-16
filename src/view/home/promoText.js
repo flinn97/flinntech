@@ -1,8 +1,9 @@
-import { MapComponent } from "../../mapTech/mapComponentInterface";
-import {  PopupButton } from "../../formTech/FormComponentsInterface";
+
 import BaseComponent from "../../templateTech/baseClasses/BaseComponent";
 
-export default class HomeContent extends BaseComponent{
+
+
+export default class PromoText extends BaseComponent{
     constructor(props, ){
         super(props);
         this.state={
@@ -12,15 +13,15 @@ export default class HomeContent extends BaseComponent{
 
         }
     }
+  
 
     getInnerContent(){
       return(<>
-      <h1 style={{marginBottom:"20px"}}>My Topics</h1>
-      <PopupButton content="Add Content" popupSwitch={"addTopic"}/>
-      <br></br>
-      <div style={{width:"70%"}}>
-      <MapComponent name={"topic"} cells={[{type:"backgroundImage",name:"name", hasLink:true}]}/>
-      </div>
+  <div style={{marginTop:"10px"}}>
+    <h2 style={{margin:"0px"}}>Sales Operations Master</h2>
+    <p style={{margin:"0px"}} className="text">Company Wide View of Sales Engagement</p>
+  </div>
+      
       </>)
     }
     render(){

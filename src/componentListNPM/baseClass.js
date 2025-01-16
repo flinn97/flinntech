@@ -13,7 +13,8 @@ export default class BaseClass {
         orderMatters: false,
         orderFilterKey: "",
         filterKey: "",
-        removeOwnerQuery:[]
+        removeOwnerQuery:[],
+        
 
 
     };

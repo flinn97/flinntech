@@ -1,9 +1,9 @@
 import { MapComponent } from "../../mapTech/mapComponentInterface";
 import { DelButton, ParentFormComponent, PopupButton, UploadButton } from "../../formTech/FormComponentsInterface";
-import HomeContent from "../home/homeContent.js";
+import TodoListContent from "../home/todoListContent.js";
 import urlService from "../../serviceTech/Util/urlService.js";
 import "./topicManager.scss"
-export default class TopicContent extends HomeContent {
+export default class TopicContent extends TodoListContent {
   getInnerContent() {
     let type = urlService.getTypeFromURL();
     let json = {

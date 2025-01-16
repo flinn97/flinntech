@@ -63,7 +63,7 @@ export default class Login extends BaseComponent {
 
 
     getHtml() {
-        debugger
+        
         let html = this.getContainerHtml();
 
         let full = <div className="fullCCLayoutRow"><Card type={this.props.loginCardType || "biggerCard"} content={html} /></div>

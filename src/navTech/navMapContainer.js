@@ -21,6 +21,7 @@ class NavMapContainer extends BaseComponent {
   }
 
   getList() {
+    
 
     let navList = this.props.navList
     let list = navList.getList();
@@ -42,7 +43,7 @@ class NavMapContainer extends BaseComponent {
   }
   getHtml() {
     
-    return <MapComponent theme={this.props.mapTheme} list={this.mapList} cells={this.list} />
+    return <MapComponent  theme={this.props.mapTheme} list={this.mapList} cells={this.list} {...this.props.navMapProps}/>
 
   }
   getNavLists(){

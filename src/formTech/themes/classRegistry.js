@@ -6,7 +6,8 @@ class DefaultRegistry {
   FCError = "defaultErrorMessage";
   FCLabel = "defaultLabel";
   FCDefaultButton="defaultButton";
-  FCDefaultDelButton="delButton"
+  FCDefaultDelButton="delButton";
+  FCImgButton = "imgButton"
   
  
 

@@ -1,0 +1,62 @@
+@import "./mapTech/themes/css/default.scss";
+@import "./cardTech/card.scss";
+
+
+.defaultWrapper{
+    margin-bottom: "10px";
+
+}
+.text{
+    font-size: 12px;
+
+}
+
+.textBold{
+    @extend .text;
+    font-weight: bold;
+}
+.Map-Attribute-Item{
+    font-size: 12px;
+
+}
+
+.Map-Section-ei{
+    @extend .Map-Section;
+    margin: 0px;
+    max-height: 30px;
+}
+.wrapperButtonEi{
+    @extend .Map-Cell;
+    justify-content: flex-end;
+    align-items: flex-end;
+    display: flex;
+
+}
+
+.eiButton{
+    border-radius: 3px;
+    color:white;
+    cursor: pointer;
+    background-color: #d87f21;
+    padding: 3px;
+    margin-right: 40px;
+
+}
+.doneEiButton{
+    @extend .eiButton;
+    background-color: #33b513;
+    margin-right: 60px;
+}
+
+.makeRelative{
+    position: relative;
+}
+
+.EiPopup{
+    @extend .tallCardDefault;
+    border-radius: 2px;
+    background-color: #d4cfcf;
+}
+.navMenu{
+    display: none;
+}

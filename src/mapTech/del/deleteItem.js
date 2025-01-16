@@ -5,9 +5,13 @@ export default class DelItem extends BaseClass {
   constructor(props){
     super(props);
     this.state.classKey= "MCDelItem";
-    this.cell.itemClick=this.del;
+    this.initialPropsSetupFunctions=[...this.initialPropsSetupFunctions, this.setDel]
 
     //define options for base class.
+
+  }
+  setDel(){
+    this.cell.itemClick=this.del;
 
   }
 
@@ -27,7 +31,7 @@ export default class DelItem extends BaseClass {
   }
 
   getOption(){
-    return "X"
+    return <div>X</div>
   }
 
 

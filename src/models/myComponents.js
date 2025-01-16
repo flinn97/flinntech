@@ -34,10 +34,56 @@ class Topic extends ComponentBase{
 
     }
 }
-class Map extends ComponentBase{
+class Task extends ComponentBase{
     json ={
         ...this.json,
-        type:'map',
+        complete:false,
+        notes:"",
+        date: ""
+
+
+    }
+}
+class ISR extends Task{
+    json ={
+        ...this.json,
+        type:'isr',
+        text: "ISR",
+
+
+    }
+}
+class Campaign extends Task{
+    json ={
+        ...this.json,
+        type:'campaign',
+        text: "Campaign",
+
+
+    }
+}
+class OEM extends ComponentBase{
+    json ={
+        ...this.json,
+        type:'oem',
+        text: "OEM",
+        category: "",
+        quotes: "0",
+        notes:"",
+       
+
+
+    }
+}
+class Report extends ComponentBase{
+    json ={
+        ...this.json,
+        type:'report',
+        emails:"",
+        time: "",
+       
+
+
     }
 }
 class Pin extends ComponentBase{
@@ -74,4 +120,4 @@ class Image extends ComponentBase{
     }
 }
 
-export{Topic, SubTopic, Image, Map, Pin, User}
+export{Topic, SubTopic, Image, ISR,Campaign, Pin, User, OEM, Report}

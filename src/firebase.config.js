@@ -5,13 +5,19 @@ import {getAuth} from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXOGBStBj_dO0k3AK_1S6a_Qo7iMRb8QY",
-  authDomain: "gospel-230ff.firebaseapp.com",
-  projectId: "gospel-230ff",
-  storageBucket: "gospel-230ff.appspot.com",
-  messagingSenderId: "411032894371",
-  appId: "1:411032894371:web:f594f5c0af1930c6ccf816",
-  measurementId: "G-LMY8DG6Z63"
+  // apiKey: "AIzaSyAXOGBStBj_dO0k3AK_1S6a_Qo7iMRb8QY",
+  // authDomain: "gospel-230ff.firebaseapp.com",
+  // projectId: "gospel-230ff",
+  // storageBucket: "gospel-230ff.appspot.com",
+  // messagingSenderId: "411032894371",
+  // appId: "1:411032894371:web:f594f5c0af1930c6ccf816",
+  // measurementId: "G-LMY8DG6Z63"
+  apiKey: "AIzaSyAxbeARGVFOA6zv-zO-43bpYK_GNF_mOP4",
+  authDomain: "eidashboard.firebaseapp.com",
+  projectId: "eidashboard",
+  storageBucket: "eidashboard.firebasestorage.app",
+  messagingSenderId: "155553057806",
+  appId: "1:155553057806:web:36f6301832b1a7eb45805f"
   // apiKey: "AIzaSyCVG7lppxce_QCnpYX1-gp3h7ym5mZClxI",
   // authDomain: "avagms-c2fee.firebaseapp.com",
   // projectId: "avagms-c2fee",
